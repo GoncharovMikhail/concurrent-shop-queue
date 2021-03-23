@@ -1,7 +1,7 @@
 package com.concurrent.shop.queue;
 
 import com.concurrent.shop.queue.customer.Customer;
-import com.concurrent.shop.queue.customer.CustomerImpl;
+import com.concurrent.shop.queue.customer.impl.CustomerImpl;
 import com.concurrent.shop.queue.service.cashtill.CashTill;
 import com.concurrent.shop.queue.service.cashtill.impl.CashTillImpl;
 import com.concurrent.shop.queue.service.service.DistributingService;
@@ -20,19 +20,17 @@ public class DistributionServiceImplTest {
 
     private final List<CashTill> cashTills = new ArrayList<CashTill>() {
         {
-            add(new CashTillImpl(20, 10));
-            add(new CashTillImpl(20, 15));
-            add(new CashTillImpl(20, 20));
+            add(new CashTillImpl(1, 20, 10));
+            add(new CashTillImpl(2, 20, 15));
+            add(new CashTillImpl(3, 20, 20));
         }
     };
 
     private final List<Customer> customers = new ArrayList<Customer>() {
         {
-            add(new CustomerImpl());
-            add(new CustomerImpl());
-            add(new CustomerImpl());
-            add(new CustomerImpl());
-            add(new CustomerImpl());
+            for (long i = 0; i < 20; i++) {
+                add(new CustomerImpl(i));
+            }
         }
     };
 

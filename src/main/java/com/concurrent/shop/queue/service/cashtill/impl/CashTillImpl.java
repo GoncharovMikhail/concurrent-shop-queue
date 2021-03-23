@@ -10,15 +10,15 @@ import lombok.Getter;
 @Getter
 public class CashTillImpl extends AbstractCashTill {
 
-    public CashTillImpl(long maximalAmountOfCustomersInQueue, long customersServedPerHour) {
-        super(maximalAmountOfCustomersInQueue, customersServedPerHour);
+    public CashTillImpl(long id, long maximalAmountOfCustomersInQueue, long customersServedPerHour) {
+        super(id, maximalAmountOfCustomersInQueue, customersServedPerHour);
     }
 
     @Override
     public void serve(Customer customer) {
         try {
             Thread.sleep(TIME_TO_SERVE_SINGLE_CUSTOMER);
-            System.out.println(this + " cash till is serving customer " + customer);
+            System.out.println(this.id + " cash till is serving customer " + customer.getId());
             customer.isServed().set(true);
             customers.take();
         } catch (InterruptedException e) {

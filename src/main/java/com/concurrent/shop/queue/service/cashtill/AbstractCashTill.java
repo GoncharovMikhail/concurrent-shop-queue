@@ -9,6 +9,7 @@ import java.util.concurrent.BlockingQueue;
  * @version 1.0
  */
 public abstract class AbstractCashTill implements CashTill {
+    protected final long id;
     protected final long maximalAmountOfCustomersInQueue;
     protected final long customersServedPerHour;
     protected BlockingQueue<Customer> customers;
@@ -16,7 +17,8 @@ public abstract class AbstractCashTill implements CashTill {
     protected final long TIME_TO_SERVE_SINGLE_CUSTOMER;
 
 
-    protected AbstractCashTill(long maximalAmountOfCustomersInQueue, long customersServedPerHour) {
+    protected AbstractCashTill(long id,long maximalAmountOfCustomersInQueue, long customersServedPerHour) {
+        this.id = id;
         this.maximalAmountOfCustomersInQueue = maximalAmountOfCustomersInQueue;
         this.customersServedPerHour = customersServedPerHour;
 

@@ -7,5 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public interface Customer {
 
+    long getId();
+
     AtomicBoolean isServed();
 }
